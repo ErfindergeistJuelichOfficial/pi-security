@@ -11,6 +11,9 @@ FTP_USR = os.getenv('FTP_USR')
 FTP_PWD = os.getenv('FTP_PWD')
 FTP_URL = os.getenv('FTP_URL')
 
+print("ftp host:")
+print(FTP_URL)
+
 picam2 = Picamera2()
 
 red = LED(17)
@@ -26,7 +29,7 @@ while True:
 
         session = ftplib.FTP(FTP_URL,FTP_USR,FTP_PWD)
         file = open(filename,'rb')
-        session.storbinary('STOR kitten.jpg', file)
+        session.storbinary('STOR picture', file)
         file.close()
         session.quit()
 
