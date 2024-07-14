@@ -5,8 +5,9 @@ from gpiozero import LED, Button
 
 button = Button(0)
 
-if button.is_pressed:
-  print("Player 1 wins!")
+while True:
+  if button.is_pressed:
+    print("Player 1 wins!")
 
 
 # SHUTDOWN = 0
