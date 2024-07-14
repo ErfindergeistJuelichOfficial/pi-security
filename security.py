@@ -27,11 +27,22 @@ while True:
         filename = "motion_" + timestr + ".jpg"
         picam2.start_and_capture_files(filename)
 
-        session = ftplib.FTP(FTP_URL,FTP_USR,FTP_PWD)
-        file = open(filename,'rb')
-        session.storbinary('STOR picture', file)
-        file.close()
-        session.quit()
+        #session = ftplib.FTP(FTP_URL, FTP_USR, FTP_PWD)#
+        
+        ftp = ftplib.FTP()
+        ftp.connect(FTP_URL, 21)
+        print (ftp.getwelcome())
+        try:
+            print ("Logging in...")
+            ftp.login(FTP_USR, FTP_PWD)
+        except Exception:
+            print ("Failed to Logging in FTP.")
+
+        ftp.quit()
+        # file = open(filename,'rb')
+        # session.storbinary('STOR picture', file)
+        # file.close()
+        # session.quit()
 
     else:
         red.off()
@@ -43,4 +54,5 @@ while True:
 
 
 # https://gpiozero.readthedocs.io/en/latest/
+
 
