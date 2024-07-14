@@ -15,8 +15,8 @@ while True:
     if button.is_pressed:
         red.on()
         timestr = strftime("%Y%m%d-%H%M%S")
-        picam2.start_and_capture_files("pic" + timestr + "_{:d}.jpg", num_files=3, delay=0.5)
-        picam2.close()
+        picam2.start_and_capture_files("pic" + timestr + "_{:d}.jpg")
+        # picam2.close()
         # picam2.start_and_capture_file("Desktop/new_image.jpg")
         # picam2.close()
     else:
