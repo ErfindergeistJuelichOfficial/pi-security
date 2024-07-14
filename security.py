@@ -1,33 +1,12 @@
-# from picamera2 import Picamera2, Preview
+from gpiozero import LED
 from time import sleep
-from gpiozero import LED, Button
-from signal import pause
+
+red = LED(17)
+
+while True:
+    red.on()
+    sleep(1)
+    red.off()
 
 
 # https://gpiozero.readthedocs.io/en/latest/
-
-button = Button(17)
-led = LED(27)
-
-button.when_pressed = led.on
-button.when_released = led.off
-
-pause()
-
-
-# SHUTDOWN = 0
-# LED = 24
-# RESET = 16
-# POWER = 20
-# STATUSQ = 21
-
-# GPIO.setmode(GPIO.BCM)
-# GPIO.setwarnings(False)
-# GPIO.setup(LED, GPIO.OUT, initial=GPIO.HIGH)
-
-
-# picam2 = Picamera2()
-# picam2.start_preview(Preview.QTGL)
-# picam2.start()
-# sleep(5)
-# picam2.close()
