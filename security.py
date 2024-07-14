@@ -27,28 +27,22 @@ while True:
         filename = "motion_" + timestr + ".jpg"
         picam2.start_and_capture_files(filename)
 
-        #session = ftplib.FTP(FTP_URL, FTP_USR, FTP_PWD)#
-        
-        ftp = ftplib.FTP()
-        ftp.connect(FTP_URL, 21)
-        print (ftp.getwelcome())
         try:
-            print ("Logging in...")
+            ftp = ftplib.FTP()
+            ftp.connect(FTP_URL, 21)
             ftp.login(FTP_USR, FTP_PWD)
+            file = open(filename,'rb')
+            ftp.storbinary('STOR picture', file)
+            file.close()
+            ftp.quit()
         except Exception:
-            print ("Failed to Logging in FTP.")
+            print ("Failed FTP.")
 
-        ftp.quit()
-        # file = open(filename,'rb')
-        # session.storbinary('STOR picture', file)
-        # file.close()
-        # session.quit()
-
+        red.off()
     else:
         red.off()
     if motionSensor.is_pressed:
         red.on()
-
     else:
         red.off()
 
