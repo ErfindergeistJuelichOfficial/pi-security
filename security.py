@@ -32,7 +32,7 @@ while True:
             ftp.connect(FTP_URL, 21)
             ftp.login(FTP_USR, FTP_PWD)
             file = open(filename,'rb')
-            ftp.storbinary('STOR picture', file)
+            ftp.storbinary("STOR " + filename, file)
             file.close()
             ftp.quit()
         except Exception:
