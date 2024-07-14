@@ -6,8 +6,8 @@ from signal import pause
 
 # https://gpiozero.readthedocs.io/en/latest/
 
-button = Button(0)
-led = LED(2)
+button = Button(17)
+led = LED(27)
 
 button.when_pressed = led.on
 button.when_released = led.off
