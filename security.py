@@ -1,7 +1,15 @@
+import os
 from gpiozero import LED,Button
 from picamera2 import Picamera2, Preview
 from time import sleep, strftime
+from dotenv import load_dotenv
 
+load_dotenv()
+
+
+FTP_USR = os.getenv('FTP_USR')
+FTP_PWD = os.getenv('FTP_PWD')
+FTP_URL = os.getenv('FTP_URL')
 
 
 
@@ -29,3 +37,4 @@ while True:
 
 
 # https://gpiozero.readthedocs.io/en/latest/
+
