@@ -7,7 +7,7 @@ button = Button(0)
 
 if button.is_pressed:
   print("Player 1 wins!")
-break
+
 
 # SHUTDOWN = 0
 # LED = 24
