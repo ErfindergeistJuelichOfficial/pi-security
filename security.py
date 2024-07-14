@@ -4,7 +4,6 @@ from gpiozero import LED, Button
 # import RPi.GPIO as GPIO
 
 button = Button(0)
-button.when_presse = 
 
 if button.is_pressed:
   print("Player 1 wins!")
