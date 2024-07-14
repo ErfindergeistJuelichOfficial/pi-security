@@ -3,13 +3,17 @@ from time import sleep
 
 red = LED(17)
 button = Button(2)
+motionSensor = Button(21)
 
 while True:
     if button.is_pressed:
-        print("Button is pressed")
         red.on()
     else:
-        print("Button is not pressed")
+        red.off()
+    if motionSensor.is_pressed:
+        red.on()
+        print("motion detected")
+    else:
         red.off()
 
 
