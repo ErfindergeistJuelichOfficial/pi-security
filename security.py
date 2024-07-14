@@ -1,13 +1,18 @@
 # from picamera2 import Picamera2, Preview
 from time import sleep
 from gpiozero import LED, Button
-# import RPi.GPIO as GPIO
+from signal import pause
+
+
+# https://gpiozero.readthedocs.io/en/latest/
 
 button = Button(0)
+led = LED(2)
 
-while True:
-  if button.is_pressed:
-    print("Player 1 wins!")
+button.when_pressed = led.on
+button.when_released = led.off
+
+pause()
 
 
 # SHUTDOWN = 0
