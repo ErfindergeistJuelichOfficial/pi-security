@@ -38,7 +38,7 @@ picam2 = Picamera2()
 
 # TODO delete pics on usb after x days. maybe an additional script than runs daily and check?
 # TODO delete pics on ftp after x days. maybe an additional script than runs daily and check?
-# TODO add shutdown button
+
 # TODO yellow LED to show night/day mode)
 
 def shutdown():
