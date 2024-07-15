@@ -43,7 +43,7 @@ picam2 = Picamera2()
 
 def shutdown():
     red.off()
-    red.blink()
+    green.blink()
     check_call(['sudo', 'poweroff'])
 
 def capture():
