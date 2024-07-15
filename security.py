@@ -62,7 +62,7 @@ while True:
     red.on()
     if button.is_pressed:
         capture()
-    if motionSensor.when_released:
+    if motionSensor.is_pressed:
         blue.on()
         capture()
         blue.off()
