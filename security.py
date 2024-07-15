@@ -64,7 +64,8 @@ while True:
         capture()
     if motionSensor.is_pressed:
         blue.on()
-        capture()
+        # capture()
+        sleep(5)
         blue.off()
 
 # https://gpiozero.readthedocs.io/en/latest/
