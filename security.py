@@ -13,9 +13,12 @@ FTP_PWD = os.getenv('FTP_PWD')
 FTP_URL = os.getenv('FTP_URL')
 
 ## setup GPIO
-red = LED(17)
+red = LED(12)
+blue = LED(16)
+green = LED(20)
+yellow = LED(21)
 button = Button(2)
-motionSensor = Button(21)
+motionSensor = Button(26)
 
 ## setup camera
 picam2 = Picamera2()
@@ -36,33 +39,33 @@ picam2 = Picamera2()
 # TODO green LED to show pic on upload
 # TODO yellow LED to show night/day mode)
 
+def capture():
+    time_str = strftime("%Y%m%d-%H%M%S")
+    filename = "motion_" + time_str + ".jpg"
+
+    picam2.start_and_capture_files(filename)
+    green.on()
+    try:
+        ftp = ftplib.FTP()
+        ftp.connect(FTP_URL, 21)
+        ftp.login(FTP_USR, FTP_PWD)
+        file = open(filename,'rb')
+        ftp.storbinary("STOR " + filename, file)
+        file.close()
+        ftp.quit()
+    except Exception:
+        print ("Failed FTP.")
+
+    green.ofF()
+    
 while True:
+    red.on()
     if button.is_pressed:
-        red.on()
-        timeStr = strftime("%Y%m%d-%H%M%S")
-        filename = "motion_" + timeStr + ".jpg"
-
-        picam2.start_and_capture_files(filename)
-
-        try:
-            ftp = ftplib.FTP()
-            ftp.connect(FTP_URL, 21)
-            ftp.login(FTP_USR, FTP_PWD)
-            file = open(filename,'rb')
-            ftp.storbinary("STOR " + filename, file)
-            file.close()
-            ftp.quit()
-        except Exception:
-            print ("Failed FTP.")
-
-        red.off()
-    else:
-        red.off()
-    if motionSensor.is_pressed:
-        red.on()
-    else:
-        red.off()
-
+        capture()
+    if motionSensor.when_released:
+        blue.on()
+        capture()
+        blue.off()
 
 # https://gpiozero.readthedocs.io/en/latest/
 
