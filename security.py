@@ -42,7 +42,6 @@ picam2 = Picamera2()
 # TODO yellow LED to show night/day mode)
 
 def shutdown():
-    red.off()
     green.blink()
     check_call(['sudo', 'poweroff'])
 
