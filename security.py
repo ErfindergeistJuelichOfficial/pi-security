@@ -56,7 +56,7 @@ def capture():
     except Exception:
         print ("Failed FTP.")
 
-    green.ofF()
+    green.off()
     
 while True:
     red.on()
