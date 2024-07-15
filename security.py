@@ -23,11 +23,12 @@ picam2 = Picamera2()
 ## program loop
 # TODO write functions
 # TODO motion is alway on. off is a detection
-# todo send pics only every 5 minutes (day mode)
+# TODO save pic on USB
+# TODO send pics only every 5 minutes (day mode)
 # TODO time detector between 8pm an 8am send more pics (night mode)
 # TODO add API to save events
-# todo delete pics on usb after x days. maybe an additional script than runs daily and check?
-# todo delete pics on ftp after x days. maybe an additional script than runs daily and check?
+# TODO delete pics on usb after x days. maybe an additional script than runs daily and check?
+# TODO delete pics on ftp after x days. maybe an additional script than runs daily and check?
 # TODO use current button to make a manuel pic
 # TODO add shutdown button
 # TODO red LED to show system is ready
@@ -40,7 +41,7 @@ while True:
         red.on()
         timeStr = strftime("%Y%m%d-%H%M%S")
         filename = "motion_" + timeStr + ".jpg"
-        # TODO save pic on USB
+
         picam2.start_and_capture_files(filename)
 
         try:
